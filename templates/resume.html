@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block title %}Resume{% endblock %}
+{% block content %}
+<main class="resumeMain">
+    <aside>
+        <nav class="resumeNav">
+            <ul>
+                <li>
+                    <a href="#about-me">Про себе</a>
+                </li>
+                <li>
+                    <a href="#education">Освіта</a>
+                </li>
+                <li>
+                    <a href="#skills">Навички</a>
+                </li>
+                <li>
+                    <a href="#technology">Технології</a>
+                </li>
+                <li>
+                    <a href="#experience">Досвід роботи</a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+    <div>
+        <section id="about-me">
+            <h2>Про себе</h2>
+            <p>Народився в 2006 році в Калуші, виріс в Франківську, живу в Берліні. За своє життя багато прожив і трохи
+                зробив</p>
+        </section>
+        <section id="education">
+            <h2>Освіта</h2>
+            <p>Вчився в 3 різних школах, зараз вчусь в одному університеті</p>
+        </section>
+        <section id="skills">
+            <h2>Навички</h2>
+            <p>
+                Список моїх навичок в порядку гордості
+            </p>
+            <ul>
+                <li>Стригти нігті</li>
+                <li>Попадати ложкою в рот</li>
+                <li>Завʼязувати шнурки</li>
+                <li>Слухати музику</li>
+                <li>Програмувати</li>
+            </ul>
+        </section>
+        <section id="technology">
+            <h2>Технології</h2>
+            <ul>
+                <li>Next.js</li>
+                <li>Typescript</li>
+                <li>Bun runtime</li>
+                <li>Codex</li>
+                <li>Youtube</li>
+            </ul>
+        </section>
+        <section id="experience">
+            <h2>Досвід роботи</h2>
+            <p>2 роки досвіду роботи як фрілансер на компанію з США, яка займається перевезеннями. В мою
+                відповідальність падали: генерація
+                лідів, шляхом скрейплення їх з просторів мережі інтернет, та розрабка внутрішніх інструментів для
+                прискорення роботи колег.</p>
+        </section>
+        <section id="my-work">
+            <h2>Я працюю</h2>
+            <figure>
+
+                <img src="{{url_for('static',filename='./images/me.jpg')}}" alt="Хлопчина сидить перед комп'ютером"
+                    style="width:400px">
+                <figcaption>Я здаю екзамен jpeg</figcaption>
+            </figure>
+        </section>
+    </div>
+</main>
+{% endblock %}
