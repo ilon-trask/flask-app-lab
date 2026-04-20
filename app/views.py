@@ -1,6 +1,5 @@
-from flask import Flask, render_template
-
-app = Flask(__name__)
+from flask import render_template
+from . import app
 
 
 @app.route("/")
@@ -11,7 +10,3 @@ def resume():
 @app.route("/contacts")
 def contacts():
     return render_template("contacts.html")
-
-
-if __name__ == "__name__":
-    app.run(debug=True)

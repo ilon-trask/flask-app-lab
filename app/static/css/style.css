@@ -64,3 +64,12 @@ header {
         gap: 10px;
     }
 }
+
+
+.noAge {
+    color: red;
+}
+
+.age {
+    color: green
+}

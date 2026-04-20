@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Greeting Page{% endblock %}
+
+{% block content %}
+<nav>
+    <ul>
+        <li><a href="{{url_for('users.greetings', name='John', age=30)}}">Greet John</a></li>
+        <li><a href="{{url_for('users.admin')}}">Admin</a></li>
+    </ul>
+</nav>
+<h2>Hello, {{name}}</h2>
+{% if age %}
+<p class="age">You are {{age }} years old.</p>
+{% else %}
+<p class="noAge">Age is unknonw.</p>
+{%endif%}
+{% endblock %}
