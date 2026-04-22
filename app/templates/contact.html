@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% from "_macros.html" import render_field %}
+
+{% block content %}
+  <div class="row g-4">
+    <div class="col-lg-7">
+      <div class="site-panel rounded-4 p-4 p-lg-5">
+        <div class="d-flex justify-content-between align-items-start gap-3 mb-4">
+          <div>
+            <p class="eyebrow mb-2">Task 1</p>
+            <h1 class="h2 mb-1">Contact Form</h1>
+            <p class="text-muted mb-0">Validation, CSRF, macro rendering, logging, and PRG in one flow.</p>
+          </div>
+          <span class="badge text-bg-light border">Flask-WTF</span>
+        </div>
+
+        <form method="post" action="{{ url_for('contact') }}" novalidate>
+          {{ form.hidden_tag() }}
+          {{ render_field(form.name) }}
+          {{ render_field(form.email) }}
+          {{ render_field(form.phone) }}
+          {{ render_field(form.subject) }}
+          {{ render_field(form.message, field_class='form-control message-box') }}
+          <button class="btn btn-primary px-4" type="submit">{{ form.submit.label.text }}</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="col-lg-5">
+      <div class="site-card card rounded-4 h-100">
+        <div class="card-body p-4">
+          <h2 class="h5 mb-3">Validation rules</h2>
+          <ul class="mb-0 text-muted">
+            <li><strong>Name:</strong> required, 4 to 10 characters</li>
+            <li><strong>Email:</strong> required, valid email format</li>
+            <li><strong>Phone:</strong> optional, but must match <code>+380XXXXXXXXX</code> if entered</li>
+            <li><strong>Subject:</strong> required dropdown selection</li>
+            <li><strong>Message:</strong> required, up to 500 characters</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
