@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('posts.static', filename='css/posts.css') }}">
+{% endblock %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+<div>
+  <a href="{{url_for('posts.list_posts')}}" class=" btn btn-outline-primary">
+    < All posts </a>
+</div>
+<div class=" row justify-content-center">
+  <div class="col-lg-9">
+    <article class="card border-0 shadow-sm">
+      <div class="card-body p-4 p-lg-5">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-start gap-3 mb-4">
+          <div>
+            <span class="badge text-bg-dark mb-3">{{ post.category.value }}</span>
+            <h1 class="mb-2">{{ post.title }}</h1>
+            <p class="text-muted mb-0">
+              Published {{ post.posted.strftime('%Y-%m-%d %H:%M') }} by {{ post.author }}
+            </p>
+          </div>
+          <div class="d-flex gap-2">
+            <a class="btn btn-outline-primary" href="{{ url_for('posts.update_post', id=post.id) }}">Edit</a>
+            <form method="post" action="{{ url_for('posts.delete_post', id=post.id) }}">
+              <button class="btn btn-outline-danger" type="submit">Delete</button>
+            </form>
+          </div>
+        </div>
+
+        <p class="lead mb-0">{{ post.content }}</p>
+      </div>
+    </article>
+  </div>
+</div>
+{% endblock %}

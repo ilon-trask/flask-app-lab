@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('posts.static', filename='css/posts.css') }}">
+{% endblock %}
+
+{% block title %}All Posts{% endblock %}
+
+{% block content %}
+<section class="posts-page">
+  <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4">
+    <div>
+      <h1 class="mb-1">All Posts</h1>
+      <p class="text-muted mb-0">Visible posts ordered by publication date.</p>
+    </div>
+    <a class="btn btn-primary btn-lg" href="{{ url_for('posts.create_post') }}">Add Post</a>
+  </div>
+
+  {% if posts %}
+  <div class="row g-4">
+    {% for post in posts %}
+    <div class="col-md-6 col-xl-4">
+      <article class="card h-100 border-0 shadow-sm post-card">
+        <div class="card-body d-flex flex-column">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <span class="badge text-bg-dark">{{ post.category.value }}</span>
+            <small class="text-muted">{{ post.posted.strftime('%Y-%m-%d %H:%M') }}</small>
+          </div>
+          <h2 class="h5">{{ post.title }}</h2>
+          <p class="text-muted flex-grow-1">{{ post.content[:100] }}{% if post.content|length > 100 %}...{% endif %}</p>
+          <a class="btn btn-outline-primary mt-2" href="{{ url_for('posts.detail_post', id=post.id) }}">View details</a>
+        </div>
+      </article>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="card border-0 shadow-sm">
+    <div class="card-body p-5 text-center">
+      <h2 class="h4 mb-2">No posts yet</h2>
+      <p class="text-muted mb-0">Create the first post to start filling the page.</p>
+    </div>
+  </div>
+  {% endif %}
+</section>
+{% endblock %}

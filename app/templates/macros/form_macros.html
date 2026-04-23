@@ -1,0 +1,25 @@
+{% macro render_field(field) %}
+  <div class="mb-3">
+    {% if field.type == "BooleanField" %}
+      <div class="form-check">
+        {{ field(class="form-check-input") }}
+        <label class="form-check-label" for="{{ field.id }}">{{ field.label.text }}</label>
+      </div>
+    {% else %}
+      {{ field.label(class="form-label fw-semibold") }}
+      {% if field.type == "TextAreaField" %}
+        {{ field(class="form-control", rows="6") }}
+      {% else %}
+        {{ field(class="form-control") }}
+      {% endif %}
+    {% endif %}
+
+    {% if field.errors %}
+      <div class="text-danger small mt-1">
+        {% for error in field.errors %}
+          <div>{{ error }}</div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+{% endmacro %}

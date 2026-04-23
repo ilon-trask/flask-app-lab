@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% from "macros/form_macros.html" import render_field %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('posts.static', filename='css/posts.css') }}">
+{% endblock %}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-lg-8">
+    <div class="card border-0 shadow-sm">
+      <div class="card-body p-4 p-lg-5">
+        <div class="mb-4">
+          <h1 class="h2 mb-1">{{ page_title }}</h1>
+          <p class="text-muted mb-0">Fill in the form below and save your changes.</p>
+        </div>
+
+        <form method="post" novalidate>
+          {{ form.hidden_tag() }}
+          {{ render_field(form.title) }}
+          {{ render_field(form.content) }}
+          {{ render_field(form.publish_date) }}
+          {{ render_field(form.category) }}
+          {{ render_field(form.enabled) }}
+          <div class="d-flex gap-2">
+            {{ form.submit(class="btn btn-primary") }}
+            <a class="btn btn-outline-secondary" href="{{ url_for('posts.list_posts') }}">Cancel</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
