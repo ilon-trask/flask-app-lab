@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}404 | Lab 9 Login System{% endblock %}
+
+{% block content %}
+  <section class="d-flex justify-content-center py-5">
+    <div class="card border-0 shadow-sm error-card">
+      <div class="card-body text-center p-5">
+        <div class="display-2 fw-bold text-danger mb-3">404</div>
+        <h1 class="h2 mb-3">Page not found</h1>
+        <p class="text-secondary mb-4">
+          The page you requested does not exist or may have been moved.
+        </p>
+        <a class="btn btn-primary" href="{{ url_for('posts.list_posts') }}">Back home</a>
+      </div>
+    </div>
+  </section>
+{% endblock %}

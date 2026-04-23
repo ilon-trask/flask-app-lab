@@ -1,0 +1,21 @@
+.post-card,
+.detail-card,
+.empty-panel {
+  border-radius: 1rem;
+}
+
+.post-card {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.post-card:hover {
+  transform: translateY(-2px);
+}
+
+.detail-content {
+  white-space: pre-wrap;
+}
+
+.empty-panel .card-body {
+  min-height: 14rem;
+}

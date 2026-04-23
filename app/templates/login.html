@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% from "macros/form_macros.html" import render_field %}
+
+{% block title %}Вхід | Lab 9 Login System{% endblock %}
+
+{% block content %}
+  <section class="row justify-content-center">
+    <div class="col-md-8 col-lg-5">
+      <div class="card border-0 shadow-sm auth-card">
+        <div class="card-body p-4 p-lg-5">
+          <h1 class="h2 mb-2">Увійти до системи</h1>
+          <p class="text-secondary mb-4">
+            Enter your email and password to manage your posts.
+          </p>
+          <form method="post">
+            {{ form.hidden_tag() }}
+            {{ render_field(form.email) }}
+            {{ render_field(form.password) }}
+            {{ render_field(form.remember) }}
+            <div class="d-grid gap-2 pt-2">
+              {{ form.submit(class_="btn btn-primary") }}
+              <a class="btn btn-outline-secondary" href="{{ url_for('register') }}">Create account</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

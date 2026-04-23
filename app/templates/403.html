@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}403 | Lab 9 Login System{% endblock %}
+
+{% block content %}
+  <section class="d-flex justify-content-center py-5">
+    <div class="card border-0 shadow-sm error-card">
+      <div class="card-body text-center p-5">
+        <div class="display-3 fw-bold text-warning mb-3">403</div>
+        <h1 class="h2 mb-3">Access denied</h1>
+        <p class="text-secondary mb-4">
+          You can edit or delete only your own posts.
+        </p>
+        <a class="btn btn-outline-primary" href="{{ url_for('posts.list_posts') }}">Back to posts</a>
+      </div>
+    </div>
+  </section>
+{% endblock %}

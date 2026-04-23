@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Акаунт | Lab 9 Login System{% endblock %}
+
+{% block content %}
+  <section class="row g-4">
+    <div class="col-lg-8">
+      <div class="card border-0 shadow-sm h-100">
+        <div class="card-body p-4 p-lg-5">
+          <h1 class="h2 mb-4">Дані поточного користувача</h1>
+          <div class="row g-3">
+            <div class="col-sm-6">
+              <div class="metric-card">
+                <span class="metric-label">ID</span>
+                <strong>{{ current_user.id }}</strong>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="metric-card">
+                <span class="metric-label">Ім'я</span>
+                <strong>{{ current_user.username }}</strong>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="metric-card">
+                <span class="metric-label">Email</span>
+                <strong>{{ current_user.email }}</strong>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="metric-card">
+                <span class="metric-label">Постів</span>
+                <strong>{{ current_user.posts|length }}</strong>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex flex-wrap gap-2 mt-4">
+            <a class="btn btn-primary" href="{{ url_for('posts.add_post') }}">Add Post</a>
+            <a class="btn btn-outline-secondary" href="{{ url_for('posts.list_posts') }}">Back to posts</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

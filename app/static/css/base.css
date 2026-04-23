@@ -1,0 +1,55 @@
+.app-body {
+  min-height: 100vh;
+  background-color: #f8f9fc;
+}
+
+.app-container {
+  max-width: 1140px;
+}
+
+.content {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.navbar-brand {
+  letter-spacing: 0.02em;
+}
+
+.auth-card,
+.error-card {
+  border-radius: 1rem;
+}
+
+.metric-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1rem;
+  height: 100%;
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 0.9rem;
+}
+
+.metric-label {
+  color: #6c757d;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.form-select[multiple] {
+  min-height: 10rem;
+}
+
+.invalid-feedback ul,
+.invalid-feedback li {
+  margin-bottom: 0;
+}
+
+@media (max-width: 767px) {
+  .app-body {
+    background-size: 20px 20px;
+  }
+}

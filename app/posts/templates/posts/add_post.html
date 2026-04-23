@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% from "macros/form_macros.html" import render_field %}
+
+{% block title %}{{ page_title }} | Lab 9 Login System{% endblock %}
+
+{% block content %}
+  <section class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card border-0 shadow-sm">
+        <div class="card-body p-4 p-lg-5">
+          <h1 class="h2 mb-2">{{ page_title }}</h1>
+          <p class="text-secondary mb-4">
+            This post will be published as <strong>{{ current_user.username }}</strong>.
+          </p>
+          <form method="post">
+            {{ form.hidden_tag() }}
+            {{ render_field(form.title) }}
+            {{ render_field(form.content) }}
+            {{ render_field(form.tags) }}
+            <div class="d-flex flex-wrap gap-2 pt-2">
+              {{ form.submit(class_="btn btn-primary") }}
+              <a class="btn btn-outline-secondary" href="{{ url_for('posts.list_posts') }}">Cancel</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
