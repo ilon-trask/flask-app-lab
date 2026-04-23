@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% from "macros/form_macros.html" import render_field %}
+
+{% block title %}{{ page_title }} | Lab 10{% endblock %}
+
+{% block content %}
+  <section class="row justify-content-center">
+    <div class="col-xl-8">
+      <div class="card border-0 shadow-sm">
+        <div class="card-body p-4 p-lg-5">
+          <h1 class="h2 mb-3">{{ page_title }}</h1>
+          <p class="text-secondary mb-4">
+            Fill in the form to create or update a post.
+          </p>
+          <form method="post">
+            {{ form.hidden_tag() }}
+            {{ render_field(form.title) }}
+            {{ render_field(form.content) }}
+            {{ render_field(form.author_id) }}
+            {{ render_field(form.tags) }}
+            <div class="d-flex gap-2 flex-wrap">
+              {{ form.submit(class_="btn btn-primary") }}
+              <a class="btn btn-outline-secondary" href="{{ url_for('posts.list_posts') }}">Cancel</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

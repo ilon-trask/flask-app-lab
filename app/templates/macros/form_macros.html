@@ -1,0 +1,19 @@
+{% macro render_field(field) %}
+  {% set control_class = "form-control" %}
+  {% if field.type == "SelectField" %}
+    {% set control_class = "form-select" %}
+  {% elif field.type == "SelectMultipleField" %}
+    {% set control_class = "form-select" %}
+  {% endif %}
+  <div class="mb-3">
+    {{ field.label(class_="form-label fw-semibold") }}
+    {{ field(class_=control_class) }}
+    {% if field.errors %}
+      <ul class="text-danger small ps-3 mb-0 mt-2">
+        {% for error in field.errors %}
+          <li>{{ error }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+{% endmacro %}

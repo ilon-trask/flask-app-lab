@@ -1,0 +1,39 @@
+* {
+  box-sizing: border-box;
+}
+
+.app-body {
+  min-height: 100vh;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0.92)),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.03) 1px, transparent 1px),
+    linear-gradient(rgba(15, 23, 42, 0.03) 1px, transparent 1px);
+  background-size: auto, 40px 40px, 40px 40px;
+  background-color: #f8fafc;
+}
+
+.navbar-brand {
+  letter-spacing: 0.02em;
+}
+
+.content {
+  display: grid;
+  gap: 1.5rem;
+}
+
+select[multiple].form-select {
+  min-height: 150px;
+}
+
+textarea.form-control {
+  min-height: 180px;
+  resize: vertical;
+}
+
+.profile-avatar {
+  width: 132px;
+  height: 132px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #e2e8f0;
+}

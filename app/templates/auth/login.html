@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% from "macros/form_macros.html" import render_field %}
+
+{% block title %}Вхід | Lab 10{% endblock %}
+
+{% block content %}
+  <section class="row justify-content-center">
+    <div class="col-md-8 col-lg-5">
+      <div class="card border-0 shadow-sm">
+        <div class="card-body p-4 p-lg-5">
+          <h1 class="h2 mb-4">Login</h1>
+          <form method="post">
+            {{ form.hidden_tag() }}
+            {{ render_field(form.email) }}
+            {{ render_field(form.password) }}
+            <div class="d-flex gap-2 flex-wrap">
+              {{ form.submit(class_="btn btn-primary") }}
+              <a class="btn btn-outline-secondary" href="{{ url_for('register') }}">Create account</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

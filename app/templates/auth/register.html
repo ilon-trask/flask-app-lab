@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% from "macros/form_macros.html" import render_field %}
+
+{% block title %}Реєстрація | Lab 10{% endblock %}
+
+{% block content %}
+  <section class="row justify-content-center">
+    <div class="col-md-9 col-lg-6">
+      <div class="card border-0 shadow-sm">
+        <div class="card-body p-4 p-lg-5">
+          <h1 class="h2 mb-4">Register</h1>
+          <form method="post">
+            {{ form.hidden_tag() }}
+            {{ render_field(form.username) }}
+            {{ render_field(form.email) }}
+            {{ render_field(form.password) }}
+            {{ render_field(form.confirm_password) }}
+            <div class="d-flex gap-2 flex-wrap">
+              {{ form.submit(class_="btn btn-primary") }}
+              <a class="btn btn-outline-secondary" href="{{ url_for('login') }}">I already have an account</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

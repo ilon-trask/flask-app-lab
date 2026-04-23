@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% from "macros/form_macros.html" import render_field %}
+
+{% block title %}Профіль | Lab 10{% endblock %}
+
+{% block content %}
+  <section class="row g-4">
+    <div class="col-lg-4">
+      <article class="card border-0 shadow-sm h-100">
+        <div class="card-body text-center p-4">
+          <img class="profile-avatar mb-3" src="{{ image_url }}" alt="Фото профілю користувача">
+          <h1 class="h3 mb-1">{{ current_user.username }}</h1>
+          <p class="text-secondary mb-3">{{ current_user.email }}</p>
+          <p class="text-secondary mb-3">{{ current_user.about_me or "Користувач ще не додав опис." }}</p>
+          <p class="small text-secondary mb-0">
+            Остання активність:
+            {% if current_user.last_seen %}
+              {{ current_user.last_seen.strftime("%d.%m.%Y %H:%M:%S") }}
+            {% else %}
+              ще не зафіксовано
+            {% endif %}
+          </p>
+        </div>
+      </article>
+    </div>
+
+    <div class="col-lg-8">
+      <article class="card border-0 shadow-sm mb-4">
+        <div class="card-body p-4">
+          <h2 class="h4 mb-4">Update profile</h2>
+          <form method="post" enctype="multipart/form-data">
+            {{ account_form.hidden_tag() }}
+            {{ render_field(account_form.username) }}
+            {{ render_field(account_form.email) }}
+            {{ render_field(account_form.about_me) }}
+            {{ render_field(account_form.image) }}
+            {{ account_form.submit(class_="btn btn-primary") }}
+          </form>
+        </div>
+      </article>
+
+      <article class="card border-0 shadow-sm">
+        <div class="card-body p-4">
+          <h2 class="h4 mb-4">Change password</h2>
+          <form method="post">
+            {{ password_form.hidden_tag() }}
+            {{ render_field(password_form.current_password) }}
+            {{ render_field(password_form.new_password) }}
+            {{ render_field(password_form.confirm_new_password) }}
+            {{ password_form.submit(class_="btn btn-primary") }}
+          </form>
+        </div>
+      </article>
+    </div>
+  </section>
+{% endblock %}
