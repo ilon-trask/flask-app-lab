@@ -1,0 +1,46 @@
+.books-toolbar-card,
+.book-card,
+.book-detail-card,
+.empty-books-card {
+    border: 0;
+    border-radius: 1rem;
+    box-shadow: 0 0.125rem 0.5rem rgba(33, 37, 41, 0.06);
+}
+
+.book-card {
+    height: 100%;
+}
+
+.book-card .card-body,
+.book-detail-card .card-body,
+.empty-books-card .card-body {
+    padding: 1.5rem;
+}
+
+.book-meta {
+    color: #6c757d;
+    font-size: 0.95rem;
+}
+
+.badge-soft {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: lowercase;
+}
+
+.book-description {
+    line-height: 1.7;
+    white-space: pre-line;
+}
+
+.search-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1.7fr 1fr auto;
+}
+
+@media (max-width: 768px) {
+    .search-grid {
+        grid-template-columns: 1fr;
+    }
+}

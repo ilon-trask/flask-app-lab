@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}Books | Flask CRUD Blueprint{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('books.static', filename='css/books.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="mb-4">
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-3">
+        <div>
+            <h1 class="page-title mb-1">All Books</h1>
+            <p class="page-subtitle">Visible books ordered by publication date.</p>
+        </div>
+        {% if current_user.is_authenticated %}
+        <a class="btn btn-primary" href="{{ url_for('books.create_book') }}">Add Book</a>
+        {% endif %}
+    </div>
+
+    <div class="card books-toolbar-card mb-4">
+        <div class="card-body">
+            <form method="get" class="search-grid">
+                <div>
+                    <label class="form-label fw-semibold" for="{{ search_form.q.id }}">{{ search_form.q.label.text }}</label>
+                    {{ search_form.q(class="form-control", placeholder="Search by title or author...") }}
+                </div>
+                <div>
+                    <label class="form-label fw-semibold" for="{{ search_form.sort.id }}">{{ search_form.sort.label.text }}</label>
+                    {{ search_form.sort(class="form-select") }}
+                </div>
+                <div class="d-grid">
+                    <label class="form-label fw-semibold text-transparent">Search</label>
+                    <button class="btn btn-outline-primary" type="submit">{{ search_form.submit.label.text }}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<section class="row g-4">
+    {% for book in books %}
+    <div class="col-lg-6">
+        <div class="card book-card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start gap-3 mb-3">
+                    <span class="badge text-bg-dark badge-soft">{{ book.genre.name|lower }}</span>
+                    <span class="book-meta">{{ book.created_at.strftime("%Y-%m-%d %H:%M") }}</span>
+                </div>
+                <h2 class="h3 mb-2">{{ book.title }}</h2>
+                <p class="book-meta mb-2">Author: {{ book.author_name }} · Year: {{ book.publication_year }}</p>
+                <p class="book-meta mb-3">Added {{ book.created_at.strftime("%Y-%m-%d %H:%M") }} by {{ book.author.username }}</p>
+                <p class="text-muted mb-2">ISBN: {{ book.isbn }}</p>
+                <p class="text-muted">{{ book.description[:140] }}{% if book.description|length > 140 %}...{% endif %}</p>
+                <div class="d-flex flex-wrap gap-2">
+                    <a class="btn btn-outline-primary btn-sm" href="{{ url_for('books.book_detail', book_id=book.id) }}">View details</a>
+                    {% if current_user.is_authenticated and current_user.id == book.user_id %}
+                    <a class="btn btn-outline-primary btn-sm" href="{{ url_for('books.edit_book', book_id=book.id) }}">Edit</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="col-12">
+        <div class="card empty-books-card">
+            <div class="card-body text-center py-5">
+                <h2 class="fw-semibold mb-2">No books yet</h2>
+                <p class="text-muted mb-0">Create the first book to start filling the page.</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</section>
+{% endblock %}

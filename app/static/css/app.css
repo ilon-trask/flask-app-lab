@@ -1,0 +1,76 @@
+body {
+    background-color: #f8f9fa;
+    color: #212529;
+}
+
+.navbar {
+    border-bottom: 1px solid #e9ecef;
+}
+
+.page-shell {
+    padding-bottom: 3rem;
+    padding-top: 2rem;
+}
+
+.page-container {
+    max-width: 1100px;
+}
+
+.page-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+}
+
+.page-subtitle {
+    color: #6c757d;
+    margin-bottom: 0;
+}
+
+.section-card {
+    border: 0;
+    border-radius: 1rem;
+    box-shadow: 0 0.125rem 0.5rem rgba(33, 37, 41, 0.06);
+}
+
+.auth-card,
+.detail-card,
+.empty-state-card,
+.error-card {
+    border: 0;
+    border-radius: 1rem;
+    box-shadow: 0 0.125rem 0.5rem rgba(33, 37, 41, 0.06);
+}
+
+.auth-card,
+.error-card {
+    margin: 0 auto;
+    max-width: 560px;
+}
+
+.detail-card {
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+.architecture-preview {
+    border-radius: 1rem;
+    box-shadow: 0 0.125rem 0.5rem rgba(33, 37, 41, 0.06);
+}
+
+.form-control,
+.form-select {
+    border-radius: 0.75rem;
+}
+
+.btn {
+    border-radius: 0.65rem;
+}
+
+.feature-card {
+    border: 0;
+    border-radius: 1rem;
+    box-shadow: 0 0.125rem 0.5rem rgba(33, 37, 41, 0.06);
+    height: 100%;
+}
+

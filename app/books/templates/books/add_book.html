@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% from "macros/form_macros.html" import render_field %}
+
+{% block title %}{{ page_title }} | Flask CRUD Blueprint{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('books.static', filename='css/books.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="card detail-card">
+    <div class="card-body p-4 p-lg-5">
+        <div class="d-flex justify-content-between align-items-center gap-3 mb-4">
+            <h1 class="fw-bold mb-0">{{ page_title }}</h1>
+            <a class="btn btn-outline-primary" href="{{ url_for('books.list_books') }}">Cancel</a>
+        </div>
+        <form method="post" novalidate>
+            {{ form.hidden_tag() }}
+            {{ render_field(form.title) }}
+            {{ render_field(form.author_name) }}
+            {{ render_field(form.publication_year) }}
+            {{ render_field(form.isbn) }}
+            {{ render_field(form.genre_id) }}
+            <div class="mb-3">
+                <label class="form-label fw-semibold" for="{{ form.description.id }}">{{ form.description.label.text }}</label>
+                {{ form.description(class="form-control", rows="9", placeholder="Write a short description of the book here...") }}
+                {% if form.description.errors %}
+                    <div class="text-danger small mt-2">
+                        {% for error in form.description.errors %}
+                            <div>{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <button class="btn btn-primary" type="submit">{{ form.submit.label.text }}</button>
+        </form>
+    </div>
+</section>
+{% endblock %}

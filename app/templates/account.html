@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Account | Flask CRUD Blueprint{% endblock %}
+
+{% block content %}
+<section class="card auth-card">
+    <div class="card-body p-4 p-lg-5">
+    <p class="text-uppercase small text-muted mb-2">Protected route</p>
+    <h1 class="fw-bold mb-3">Account</h1>
+    <p class="text-muted">
+        This page is available only for authenticated users through Flask-Login and the `@login_required` decorator.
+    </p>
+
+    <div class="row g-3 mt-1">
+        <div class="col-sm-6">
+            <div class="card section-card">
+                <div class="card-body">
+                    <h2 class="h6">Username</h2>
+                    <p class="mb-0">{{ current_user.username }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card section-card">
+                <div class="card-body">
+                    <h2 class="h6">Email</h2>
+                    <p class="mb-0">{{ current_user.email }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card section-card">
+                <div class="card-body">
+                    <h2 class="h6">User ID</h2>
+                    <p class="mb-0">{{ current_user.id }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card section-card">
+                <div class="card-body">
+                    <h2 class="h6">Authenticated</h2>
+                    <p class="mb-0">{{ current_user.is_authenticated }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+{% endblock %}

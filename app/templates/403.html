@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}403 | Access denied{% endblock %}
+
+{% block content %}
+<section class="card error-card">
+    <div class="card-body text-center p-5">
+        <h1 class="display-3 fw-bold text-danger">403</h1>
+        <h2 class="h3 mb-3">Access denied</h2>
+        <p class="text-muted mb-4">Only the owner of this book can change or delete it.</p>
+        <a class="btn btn-primary" href="{{ url_for('books.list_books') }}">Back to books</a>
+    </div>
+</section>
+{% endblock %}
