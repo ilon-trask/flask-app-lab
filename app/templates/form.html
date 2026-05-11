@@ -1,0 +1,27 @@
+<form method="post" class="post-form">
+    {{ form.hidden_tag() }}
+
+    {% for field in form %}
+    {% if field.type not in ["CSRFTokenField", "HiddenField", "SubmitField"] %}
+    <div class="{% if loop.last %}mb-3{% else %}mb-1{% endif %}">
+        {{ field.label(class="form-label") }}
+
+        {% if field.type == "SelectField" %}
+        {{ field(class="form-select") }}
+        {%else %}
+        {{ field(class="form-control") }}
+        {% endif %}
+
+        {% for error in field.errors %}
+        <div class="invalid-feedback d-block">{{ error }}</div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% endfor %}
+
+    {% for field in form %}
+    {% if field.type == "SubmitField" %}
+    {{ field(class="btn btn-primary") }}
+    {% endif %}
+    {% endfor %}
+</form>

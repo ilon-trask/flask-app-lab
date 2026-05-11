@@ -1,0 +1,72 @@
+.page-shell {
+    padding: 20px;
+}
+
+.post-section-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.post-card {
+    width: 360px;
+    max-width: 100%;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    padding: 18px;
+    color: #222;
+    font-size: 14px;
+}
+
+.post-card h3 {
+    margin: 0 0 8px;
+    color: #ff9800;
+    font-size: 27px;
+    font-weight: 700;
+}
+
+.post-card p {
+    margin-bottom: 18px;
+    line-height: 1.45;
+}
+
+.post-content {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.post-date {
+    color: #777;
+    font-size: 13px;
+}
+
+.post-tags {
+    margin-bottom: 0;
+    font-size: 14px;
+    color: #6c757d;
+}
+
+.post-tag {
+    color: #f0a500;
+    font-weight: 600;
+}
+
+.post-tag-separator {
+    margin: 0 5px;
+    color: #f0a500;
+    font-weight: 600;
+}
+
+.post-form {
+    width: 100%;
+}
+
+.post-form .form-label {
+    margin-bottom: 0.35rem;
+}
+
+.post-content-input {
+    min-height: 155px;
+}
